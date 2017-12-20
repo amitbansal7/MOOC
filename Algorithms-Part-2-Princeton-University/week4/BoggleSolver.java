@@ -5,11 +5,11 @@ import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.In;
 
 /*
-	Correctness:  12/13 tests passed
+	Correctness:  13/13 tests passed
 	Memory:       3/3 tests passed
 	Timing:       9/9 tests passed
 
-	Score :- 96/100
+	Score :- 100/100
 */
 public class BoggleSolver {
 
@@ -60,8 +60,12 @@ public class BoggleSolver {
 
 		char c = board[i][j];
 		root = root.next[c - 'A'];
-		if (c == 'Q' && root.next['U' - 'A'] != null)
-			root = root.next['U' - 'A'];
+		if (c == 'Q') {
+			if (root.next['U' - 'A'] != null) {
+				root = root.next['U' - 'A'];
+			} else
+				return;
+		}
 
 		if (root.word != null) {
 			res.add(root.word);
